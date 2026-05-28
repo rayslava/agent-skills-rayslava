@@ -1,0 +1,11 @@
+{
+  "name": "rust-dev",
+  "description": "Rust development conventions and mandatory post-change pipeline (clippy / fix / fmt / test). Auto-loads on any Rust signal.",
+  "version": "0.1.0",
+  "author": {
+    "name": "rayslava"
+  },
+  "homepage": "https://github.com/rayslava/agent-skills",
+  "repository": "https://github.com/rayslava/agent-skills",
+  "license": "MIT"
+}

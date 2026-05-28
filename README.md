@@ -12,6 +12,33 @@ that consumes the standard skill layout (Claude Code, OpenAI Codex, …).
 
 ## Install
 
+### Claude Code — marketplace
+
+The repo ships a single-plugin marketplace via `.claude-plugin/marketplace.json`.
+
+**Local install** (no GitHub push needed):
+
+```
+/plugin marketplace add ~/projects/agent-skills
+/plugin install rust-dev@agent-skills
+```
+
+**Remote install:**
+
+```
+/plugin marketplace add rayslava/agent-skills
+/plugin install rust-dev@agent-skills
+```
+
+Update later with `/plugin marketplace update agent-skills`. Validate before
+install with `/plugin validate ~/projects/agent-skills`.
+
+Claude Code copies the plugin to its versioned cache at `~/.claude/plugins/cache/`,
+so source edits don't auto-propagate — run `/plugin marketplace update` after
+changes.
+
+### pi and other harnesses
+
 Clone the repository somewhere stable:
 
 ```bash

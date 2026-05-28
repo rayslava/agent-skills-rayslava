@@ -1,0 +1,14 @@
+{
+  "name": "agent-skills",
+  "description": "Agent skills for pi, Claude Code, OpenAI Codex, and any harness that consumes the standard Agent Skills layout",
+  "owner": {
+    "name": "rayslava"
+  },
+  "plugins": [
+    {
+      "name": "rust-dev",
+      "source": "./",
+      "description": "Rust development conventions and mandatory post-change pipeline (clippy / fix / fmt / test). Auto-loads on any Rust signal."
+    }
+  ]
+}
