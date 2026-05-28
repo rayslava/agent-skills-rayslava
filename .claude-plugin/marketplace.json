@@ -1,5 +1,5 @@
 {
-  "name": "agent-skills",
+  "name": "agent-skills-rayslava",
   "description": "Agent skills for pi, Claude Code, OpenAI Codex, and any harness that consumes the standard Agent Skills layout",
   "owner": {
     "name": "rayslava"

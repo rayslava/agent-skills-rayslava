@@ -1,4 +1,4 @@
-# agent-skills
+# agent-skills-rayslava
 
 A collection of [Agent Skills](https://agentskills.io/specification) for use with
 [pi](https://github.com/earendil-works/pi-coding-agent) and any other harness
@@ -19,19 +19,19 @@ The repo ships a single-plugin marketplace via `.claude-plugin/marketplace.json`
 **Local install** (no GitHub push needed):
 
 ```
-/plugin marketplace add ~/projects/agent-skills
-/plugin install rust-dev@agent-skills
+/plugin marketplace add ~/projects/agent-skills-rayslava
+/plugin install rust-dev@agent-skills-rayslava
 ```
 
 **Remote install:**
 
 ```
-/plugin marketplace add rayslava/agent-skills
-/plugin install rust-dev@agent-skills
+/plugin marketplace add rayslava/agent-skills-rayslava
+/plugin install rust-dev@agent-skills-rayslava
 ```
 
-Update later with `/plugin marketplace update agent-skills`. Validate before
-install with `/plugin validate ~/projects/agent-skills`.
+Update later with `/plugin marketplace update agent-skills-rayslava`. Validate
+before install with `/plugin validate ~/projects/agent-skills-rayslava`.
 
 Claude Code copies the plugin to its versioned cache at `~/.claude/plugins/cache/`,
 so source edits don't auto-propagate — run `/plugin marketplace update` after
@@ -42,7 +42,7 @@ changes.
 Clone the repository somewhere stable:
 
 ```bash
-git clone https://github.com/rayslava/agent-skills.git ~/projects/agent-skills
+git clone https://github.com/rayslava/agent-skills-rayslava.git ~/projects/agent-skills-rayslava
 ```
 
 Then make pi aware of the `skills/` directory.
@@ -53,7 +53,7 @@ Add to `~/.pi/settings.json`:
 
 ```json
 {
-  "skills": ["~/projects/agent-skills/skills"]
+  "skills": ["~/projects/agent-skills-rayslava/skills"]
 }
 ```
 
@@ -63,7 +63,7 @@ Add to `<project>/.pi/settings.json`:
 
 ```json
 {
-  "skills": ["~/projects/agent-skills/skills"]
+  "skills": ["~/projects/agent-skills-rayslava/skills"]
 }
 ```
 
@@ -73,13 +73,13 @@ If you don't want to touch settings, symlink individual skills into a directory
 pi already scans (`~/.agents/skills/` or `~/.pi/agent/skills/`):
 
 ```bash
-ln -s ~/projects/agent-skills/skills/rust-dev ~/.agents/skills/rust-dev
+ln -s ~/projects/agent-skills-rayslava/skills/rust-dev ~/.agents/skills/rust-dev
 ```
 
 ### Option D — one-off CLI flag
 
 ```bash
-pi --skill ~/projects/agent-skills/skills/rust-dev
+pi --skill ~/projects/agent-skills-rayslava/skills/rust-dev
 ```
 
 ## Verifying
@@ -97,7 +97,7 @@ files, `cargo`, `clippy`, etc.
 ## Layout
 
 ```
-agent-skills/
+agent-skills-rayslava/
 └── skills/
     └── <skill-name>/
         └── SKILL.md       # frontmatter + instructions
