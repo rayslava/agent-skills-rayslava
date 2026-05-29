@@ -1,0 +1,23 @@
+{
+  "name": "agent-skills-rayslava",
+  "version": "0.1.0",
+  "description": "Agent skills and pi extensions for pi, Claude Code, and any harness consuming the standard Agent Skills layout",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "author": {
+    "name": "rayslava"
+  },
+  "homepage": "https://github.com/rayslava/agent-skills-rayslava",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rayslava/agent-skills-rayslava"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "pi": {
+    "extensions": ["./extensions"],
+    "skills": ["./skills"]
+  }
+}

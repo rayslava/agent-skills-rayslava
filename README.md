@@ -10,6 +10,12 @@ that consumes the standard skill layout (Claude Code, OpenAI Codex, …).
 |-------|-------------|
 | [`rust-dev`](skills/rust-dev/SKILL.md) | Rust development conventions, mandatory post-change pipeline (`clippy` / `fix` / `fmt` / `test`), quality gates, and `anodized` spec usage. Auto-loads on any Rust signal. |
 
+## pi extensions in this repo
+
+| Command | Description |
+|---------|-------------|
+| [`/thinking`](extensions/thinking.ts) | Switch the model's thinking effort from the console. `/thinking` opens a picker (current level marked); `/thinking <level>` sets it directly. Levels: `off` / `minimal` / `low` / `medium` / `high` / `xhigh` (prefixes and shorthands like `max`, `med`, `none` accepted). Clamp-aware for non-reasoning models. |
+
 ## Install
 
 ### Claude Code — marketplace
@@ -37,9 +43,29 @@ Claude Code copies the plugin to its versioned cache at `~/.claude/plugins/cache
 so source edits don't auto-propagate — run `/plugin marketplace update` after
 changes.
 
-### pi and other harnesses
+### pi — install as a package (skills + extensions)
 
-Clone the repository somewhere stable:
+The repo is a [pi package](https://github.com/earendil-works/pi-coding-agent/blob/main/docs/packages.md):
+its `package.json` `pi` manifest exposes `./extensions` (the `/thinking` command)
+and `./skills` (rust-dev). Installing it wires up **both** at once.
+
+```bash
+# remote (pinned ref recommended)
+pi install git:github.com/rayslava/agent-skills-rayslava
+
+# or from a local clone (not copied — tracks your working tree live)
+git clone https://github.com/rayslava/agent-skills-rayslava.git ~/projects/agent-skills-rayslava
+pi install ~/projects/agent-skills-rayslava
+```
+
+Use `-l` to write to project settings (`.pi/settings.json`) instead of user
+settings. Manage with `pi list`, `pi update`, `pi remove`. After install,
+`/reload` (or restart) and the `/thinking` command + rust-dev skill are live.
+
+### pi — skills only (other harnesses)
+
+If you only want the skills (no extensions), clone the repo and point pi at the
+`skills/` directory directly.
 
 ```bash
 git clone https://github.com/rayslava/agent-skills-rayslava.git ~/projects/agent-skills-rayslava
@@ -98,13 +124,17 @@ files, `cargo`, `clippy`, etc.
 
 ```
 agent-skills-rayslava/
+├── package.json           # pi-package manifest (extensions + skills)
+├── extensions/
+│   └── thinking.ts        # /thinking command
 └── skills/
     └── <skill-name>/
-        └── SKILL.md       # frontmatter + instructions
+        └── SKILL.md   # frontmatter + instructions
 ```
 
-This matches the [Agent Skills standard](https://agentskills.io/specification),
-so the same repo works with any compliant harness.
+The `skills/` layout matches the [Agent Skills standard](https://agentskills.io/specification),
+so the same repo works with any compliant harness; the `package.json` `pi`
+manifest additionally lets pi load the extensions.
 
 ## Adding a new skill
 
