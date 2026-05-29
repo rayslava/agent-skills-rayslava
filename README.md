@@ -10,6 +10,7 @@ that consumes the standard skill layout (Claude Code, OpenAI Codex, …).
 |-------|-------------|
 | [`rust-dev`](skills/rust-dev/SKILL.md) | Rust development conventions, mandatory post-change pipeline (`clippy` / `fix` / `fmt` / `test`), quality gates, and `anodized` spec usage. Auto-loads on any Rust signal. |
 | [`github-pr`](plugins/github-pr/skills/github-pr/SKILL.md) | Read GitHub Pull Requests and render them as clean markdown via the `gh` CLI (`gh` + `jq`, no Python/MCP) — header, body, checks, review threads with resolved/unresolved state, and discussion. Auto-loads on any PR signal. |
+| [`github-pr-write`](plugins/github-pr-write/skills/github-pr-write/SKILL.md) | Create, edit, and respond to GitHub Pull Requests via the `gh` CLI — open/edit a PR, reply to and resolve review threads, post comments. Read-modify-write body edits; confirms before every write. |
 
 ## pi extensions in this repo
 

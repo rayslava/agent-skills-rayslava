@@ -14,6 +14,11 @@
       "name": "github-pr",
       "source": "./plugins/github-pr",
       "description": "Read GitHub Pull Requests and render them as clean markdown via the gh CLI (gh + jq, no Python). Auto-loads on any PR / pull-request signal."
+    },
+    {
+      "name": "github-pr-write",
+      "source": "./plugins/github-pr-write",
+      "description": "Create, edit, and respond to GitHub Pull Requests via the gh CLI (create/edit PR, reply to and resolve review threads). Confirms before every write."
     }
   ]
 }
