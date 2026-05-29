@@ -1,0 +1,11 @@
+{
+  "name": "github-pr",
+  "description": "Read GitHub Pull Requests and render them as clean markdown via the gh CLI (gh + jq, no Python). Auto-loads on any PR / pull-request signal.",
+  "version": "0.1.0",
+  "author": {
+    "name": "rayslava"
+  },
+  "homepage": "https://github.com/rayslava/agent-skills-rayslava",
+  "repository": "https://github.com/rayslava/agent-skills-rayslava",
+  "license": "MIT"
+}
