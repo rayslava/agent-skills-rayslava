@@ -8,8 +8,8 @@ that consumes the standard skill layout (Claude Code, OpenAI Codex, …).
 
 | Skill | Description |
 |-------|-------------|
-| [`rust-dev`](skills/rust-dev/SKILL.md) | Rust development conventions, mandatory post-change pipeline (`clippy` / `fix` / `fmt` / `test`), quality gates, and `anodized` spec usage. Auto-loads on any Rust signal. |
-| [`github-pr`](plugins/github-pr/skills/github-pr/SKILL.md) | Read GitHub Pull Requests and render them as clean markdown via the `gh` CLI (`gh` + `jq`, no Python/MCP) — header, body, checks, review threads with resolved/unresolved state, and discussion. Auto-loads on any PR signal. |
+| [`rust-dev`](plugins/rust-dev/skills/rust-dev/SKILL.md) | Rust development conventions, mandatory post-change pipeline (`clippy` / `fix` / `fmt` / `test`), quality gates, and `anodized` spec usage. Auto-loads on any Rust signal. |
+| [`go-dev`](plugins/go-dev/skills/go-dev/SKILL.md) | Go development conventions and mandatory post-change pipeline (fmt / mod tidy / vet / test). Auto-loads on any Go signal. |
 | [`github-pr-write`](plugins/github-pr-write/skills/github-pr-write/SKILL.md) | Create, edit, and respond to GitHub Pull Requests via the `gh` CLI — open/edit a PR, reply to and resolve review threads, post comments. Read-modify-write body edits; confirms before every write. |
 
 ## pi extensions in this repo
@@ -49,7 +49,7 @@ changes.
 
 The repo is a [pi package](https://github.com/earendil-works/pi-coding-agent/blob/main/docs/packages.md):
 its `package.json` `pi` manifest exposes `./extensions` (the `/thinking` command)
-and `./skills` (rust-dev). Installing it wires up **both** at once.
+and `./skills` (rust-dev, go-dev). Installing it wires up **both** at once.
 
 ```bash
 # remote (pinned ref recommended)
@@ -102,12 +102,14 @@ pi already scans (`~/.agents/skills/` or `~/.pi/agent/skills/`):
 
 ```bash
 ln -s ~/projects/agent-skills-rayslava/skills/rust-dev ~/.agents/skills/rust-dev
+ln -s ~/projects/agent-skills-rayslava/plugins/go-dev/skills/go-dev ~/.agents/skills/go-dev
 ```
 
 ### Option D — one-off CLI flag
 
 ```bash
-pi --skill ~/projects/agent-skills-rayslava/skills/rust-dev
+pi --skill ~/projects/agent-skills-rayslava/plugins/rust-dev/skills/rust-dev
+pi --skill ~/projects/agent-skills-rayslava/plugins/go-dev/skills/go-dev
 ```
 
 ## Verifying
@@ -116,11 +118,13 @@ After install, in pi:
 
 ```
 /skill:rust-dev
+/skill:go-dev
 ```
 
 should load the skill content. Skills also auto-load when their description
-matches the current task — for `rust-dev` that means any mention of `.rs`
-files, `cargo`, `clippy`, etc.
+matches the current task — `rust-dev` recognizes `.rs` files, `cargo`, and
+`clippy`; `go-dev` recognizes `.go` files, `go.mod`, `go.sum`, `go.work`,
+`go test`, `gofmt`, and goroutines.
 
 ## Layout
 
